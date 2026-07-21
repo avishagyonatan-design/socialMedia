@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialSim</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-logo">
+      <span class="logo-icon">&#9733;</span>
+      <span class="logo-text">SocialSim</span>
+    </div>
+
+    <div class="header-create">
+      <button class="btn-create" id="openCreatePost">+ New Post</button>
+    </div>
+
+    <div class="header-right">
+      <div class="notif-bell" id="notifBell">
+        <span>&#128276;</span>
+        <span class="notif-badge" id="notifBadge">0</span>
+      </div>
+      <div class="active-user-label">Logged in as: <strong id="activeUserLabel">Nor</strong></div>
+      <select id="activeUserSelect" class="user-select">
+        <option value="Nor">Nor</option>
+        <option value="Dan">Dan</option>
+        <option value="Ron">Ron</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- NOTIFICATIONS PANEL -->
+  <div class="notif-panel hidden" id="notifPanel">
+    <div class="notif-panel-header">
+      <h3>Notifications</h3>
+      <button id="closeNotifPanel">&#10005;</button>
+    </div>
+    <div id="notifList" class="notif-list"></div>
+  </div>
+
+  <!-- CREATE POST MODAL -->
+  <div class="modal-overlay hidden" id="createPostModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Create Post</h3>
+        <button class="modal-close" id="closeModal">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <div class="post-type-tabs">
+          <button class="tab-btn active" data-type="text">&#128172; Text</button>
+          <button class="tab-btn" data-type="event">&#128197; Event</button>
+          <button class="tab-btn" data-type="poll">&#128202; Poll</button>
+        </div>
+
+        <textarea id="postContent" placeholder="What's on your mind?" rows="3"></textarea>
+
+        <div id="eventFields" class="extra-fields hidden">
+          <input type="datetime-local" id="eventDate" placeholder="Event date & time" />
+          <input type="text" id="eventLocation" placeholder="Location (e.g. Tel Aviv)" />
+        </div>
+
+        <div id="pollFields" class="extra-fields hidden">
+          <input type="text" class="poll-opt" placeholder="Option 1" />
+          <input type="text" class="poll-opt" placeholder="Option 2" />
+          <input type="text" class="poll-opt" placeholder="Option 3 (optional)" />
+        </div>
+
+        <div class="modal-error hidden" id="modalError"></div>
+        <button class="btn-primary" id="submitPost">Publish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <main class="layout">
+
+    <!-- SIDEBAR: Users -->
+    <aside class="sidebar">
+      <h2 class="sidebar-title">Users</h2>
+      <div id="userList"></div>
+    </aside>
+
+    <!-- FEED -->
+    <section class="feed" id="feed">
+      <div class="feed-empty hidden" id="feedEmpty">No posts yet. Be the first!</div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
